@@ -1,5 +1,11 @@
 #+ endpoint: https://query.wikidata.org/
 
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT ?person ?personLabel ?birthDate WHERE {
   # Step 1: ?person is an instance of human (Q5)
   ?person wdt:P31 wd:Q5.
