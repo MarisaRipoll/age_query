@@ -1,0 +1,13 @@
+#+ endpoint: https://query.wikidata.org/
+
+PREFIX wd: <http://www.wikidata.org/entity/> 
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+
+SELECT ?birthYear (COUNT(?human) AS ?count)
+WHERE {
+  ?human wdt:P31 wd:Q5.               # Instance of human
+
+  ?human wdt:P569 ?birthDate.         # Date of birth
+  BIND(YEAR(?birthDate) AS ?birthYear)
+}
