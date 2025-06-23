@@ -1,0 +1,15 @@
+#+ endpoint: https://query.wikidata.org/
+
+SELECT ?person ?personLabel ?birthDate WHERE {
+  # Step 1: ?person is an instance of human (Q5)
+  ?person wdt:P31 wd:Q5.
+  
+  # Step 2: Get the birth date of the person
+  ?person wdt:P569 ?birthDate.
+  
+  # Step 3: Filter to only include birth dates in 1966
+  FILTER(YEAR(?birthDate) = 1966)
+
+  # Step 4: Get the label (human-readable name) of the person
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
